@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  title: MyString
+  rating: 1
+  private: 1
+  description: MyText
+  view_count: 1
+  date_uploaded: 1
+  last_view: 2012-11-29
+  num_comments: 1
+
+two:
+  user: 
+  title: MyString
+  rating: 1
+  private: 1
+  description: MyText
+  view_count: 1
+  date_uploaded: 1
+  last_view: 2012-11-29
+  num_comments: 1

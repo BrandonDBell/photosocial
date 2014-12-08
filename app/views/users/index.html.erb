@@ -1,0 +1,29 @@
+<br />
+<br />
+<div class="container result"> 
+  <div class="one-third column">
+      <h2>Filter Users: </h2>
+      <hr />
+      <%= form_tag users_path, :method => 'get' do %>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :username => nil %>
+        <% if params[:search] %>
+           <%= link_to "Clear Filter", users_path %>
+        <% end %>
+      <% end %>
+    </div>
+  <div class="two-thirds column">
+    <h2>Users: </h2> 
+      <hr />
+      <ul>
+        <% @users.each do |user|  %>
+          <% if !current_user?(user) %>
+            <li>
+              <%= image_tag user.avatar.url(:profileimg) %>
+              <%= link_to user.username, user %>
+            </li>
+          <% end %>
+        <% end %>
+      </uL>
+    </div>
+</div>

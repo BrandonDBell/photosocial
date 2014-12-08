@@ -1,0 +1,17 @@
+<div class="container">
+  <header>
+    <nav class="round">
+      <div id="nav">
+        <ul>
+          <% if signed_in? %>
+            <li><%= link_to image_tag("camera-header.png"), "/signin" %></li>
+            <li><%= link_to "USERS", users_path %></li>
+            <li><%= link_to "PROFILE", user_path(current_user) %></li>
+            <li><%= link_to "SETTINGS", edit_user_path(current_user) %></li>
+            <li><%= link_to "SIGN OUT", signout_path, method: :delete %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </header> 
+</div>

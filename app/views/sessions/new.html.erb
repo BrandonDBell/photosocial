@@ -1,0 +1,32 @@
+<% if signed_in? %>
+  <br />
+  <br />
+  <br />
+  <div class="container">
+  <%= image_tag "camera.png" %><h1>Welcome to SnapShot!</h1>
+  <h5>We are a social photo sharing site allowing you to upload any jpeg, png, or gif and as many images as to your hearts desire. You can also view your friends photos, comment on them, like or dislike them, and follow them. Starting taking snapshots and upload them now!</h5>
+  </div>
+<% else %>
+  <div class="container">
+  <%= image_tag "camera.png" %><h1>Welcome to SnapShot!</h1>
+  <h5>We are a social photo sharing site allowing you to upload any jpeg, png, or gif and as many images as to your hearts desire. You can also view your friends photos, comment on them, like or dislike them, and follow them. Starting taking snapshots and upload them now!</h5>
+  <br />
+  <h3>Sign in or create a new account to get started!</h3>
+    <div>
+      <%= form_for(:session, url: sessions_path) do |f| %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+
+        <%= f.submit "Sign in" %>
+      <% end %>
+
+      <p>New User? <%= link_to "Sign up now!", new_path %></p>
+    </div>
+  </div>
+  <% end %>
+    
+  

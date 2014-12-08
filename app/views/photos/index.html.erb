@@ -1,0 +1,25 @@
+<br />
+<br />
+<div class="container result">
+	<div class="two-thirds column">
+		<h1>Photos tagged with <%= params[:tag] %>:</h2>
+		<hr />
+		<ul>
+			<% @photos.each do |photo| %>
+				<% if !photo.private %>
+				<h2><%= photo.title %></h2>
+		 		<%= link_to image_tag(photo.photo.url(:thumb)), photo.photo.url %><br />
+				Username: <%= link_to photo.user, photo.user %><br />
+     			Photo tags:<br /> <%= raw photo.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+  			<% end %>
+  			<% end %>
+		</ul>
+	</div>
+<div class="one-third column">
+	<h1> Tag Cloud: </h1>
+	<hr />
+ 	<% tag_cloud Photo.tag_counts, %w[s m l] do |tag, css_class| %>
+    	<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  	<% end %>
+	</div>
+</div>

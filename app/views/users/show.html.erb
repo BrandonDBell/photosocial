@@ -1,0 +1,55 @@
+<br />
+<br />
+<div class="container result">
+<center><h2><%= @user.username %></h2>
+	<%= link_to image_tag(@user.avatar.url(:home)) %><br /></center>
+	<hr />
+	<% if @user.private == false || current_user?(@user) %>
+<div class="one-third column">
+	<h3>Photo Uploads:</h3>
+	<% if current_user?(@user) %>
+	<%= button_to "New Photo Upload", new_user_photo_path(current_user), method: "get" %>
+	<% end %>
+	<ul>
+		<% @user.photos.each do |photo| %>
+			<% if photo.private == false || current_user?(@user) %>
+				<%= image_tag photo.photo.url(:thumb) %>
+				<li>
+					<%= photo.title %> | <%= link_to 'Show', user_photo_path(@user, photo) %> 
+				</li>
+			<% end %>
+		<% end %>	
+	</ul>	
+</div>	
+<div class="one-third column">
+	<h3>Comments:</h3>
+	<%= button_to "Post Comment", new_user_comment_path(@user), method: "get" %>
+	<br /><br />
+	<ul>
+		<% @user.comments.each do |comment| %>
+			<% @poster = User.find(comment[:poster]) %>
+			<% if (comment.private == false || current_user?(@user) || current_user?(@poster)) %>
+				<li> 
+					<%= link_to image_tag @poster.avatar.url(:profileimg) %>
+					<%= link_to @poster.username, @poster %>
+				</li>
+				<li> 
+					<em>Posted <%= time_ago_in_words(comment.created_at) %> ago </em>
+				</li>
+				<li> 
+					<%= comment.posting %> 
+				</li>
+				<br />
+			<% end %>
+		<% end %>
+	</ul>
+</div>
+<div class="one-third column">
+	<h3>Friends:</h3>
+	<%= render 'follow_form' if signed_in? %>
+	<%= render 'shared/stats' %>
+</div>
+<% else %>
+<br /><br />
+<strong>This profile is set to private</strong>
+<% end %>

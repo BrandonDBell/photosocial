@@ -1,0 +1,8 @@
+SnapShot is a lite social media website revolving around uploading photos and talking to other users.
+  
+Programmed by Nathan Butler and Brandon Bell
+
+known bugs:
+  Both update user and sign out do not work. We spent a long time on these and even went to Josh to ask him a few questions and he couldn't help us out either.
+  The update for votes is messed up right now so therefore the code that should work, but doesn't, is currently taken out.
+
